@@ -69,4 +69,4 @@ summarized_data <- final_dataset %>% group_by(Subject, ActivityDescription) %>% 
 tidy_summarized_data <- melt(summarized_data, id=c("Subject", "ActivityDescription"))
 
 #write the final summarized dataset to a file
-write.table(tidy_summarized_data, file="./tidy_summarized_data.txt", sep="\t", row.name=FALSE)
+write.table(tidy_summarized_data, file="./tidy_summarized_data.txt", sep="\t", row.names=FALSE)
