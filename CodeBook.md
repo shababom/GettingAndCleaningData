@@ -1,4 +1,44 @@
 # Codebook
+##Process Followed to Generate Final Output
+The original data contained both training and test datasets.  There datasets were stored in multiple files:
+*  A file with the observations and readings for each of 561 variables
+*  A file with the subject id for each observation 
+*  A file with the activity id for each observation
+In addtion to the experimental data, there were the following descriptive files:
+*  A file containing the variable names associated with the variables in the observations
+*  A file containing a cross reference between the activity id's and the activity descriptions
+
+For more information on the original dataset see the "Original Dataset Description" section below.
+
+
+##Steps  
+1. Assign descritive column names to both the training and test datasets using the file containing the variable names.
+2. Create datasets that are a subset of each of the training and test datasets containing only the variables associated with mean and standard deviation.
+	+ Using the grep command with regular expressions provided an easy way to search the descriptive column names to select any column whose name contained the either the text mean() or std().
+	+ The grep command was chosen over the select command in the dplyr package because there were duplicate column names and the select command did not easily handle that situation
+3. Append the activity id and subject id data to the dataset from step 2 to create a complete dataset with the variables, subject id and activity id for each observation.
+4. Combine the test and training datasets from step 3 into a single dataset.
+5. Add the activity labels to the data set in step 4.  This adds a descriptive, categorical attribute to each observation to make it easier to understand what activity that observation is for.
+	+ This was done using the merge command from the dplyr package.
+	+ This was applied after creating the final dataset because the merge command re-orders the data set.  The original datasets are all in the same order which allows them to be combined cleanly.  If the application of the activity labels was done using merge prior to combining all of the subject and activity data to the variables, they would not be combined accurately.
+6. The activity id column was then removed from the dataset, leaving a clean dataset containing only the subject id, activity description and mean/std variables.
+7. The average of each variable in the dataset from step 6 was calculated grouped by each unique combination of subject id and activity description resulting in a dataset that contained the following:
+	+One row for every combination of subject id and activity
+	+One column for the average of observations for each of the original variables for that subject id and activity
+8. In order to make this data "tidy" and easy to use for analysis, I chose to reshape the wide dataset into a narrow dataset using the melt command from the reshape2 package.   
+The final, tidy dataset contains the following attributes:
+	+  Subject ID
+	+  ActivityDescription
+	+  Variable - containes the name of the variable observed
+	+  Value - contains the value of the average of the variable in the "Variable" column for that subject and activity
+
+The final dataset adheres to the general principals of "tidy" data as follows:
+*  Each observation is in a single row - the average of the original observations of the variable in the variable column for the subject and activity in the row  
+*  Each column has descriptive label names
+*  The rows have descriptive Activity descriptions making it easy to know what activity and variable it is for
+*  Each column only contains one single type of data
+*  The data is structured in a way that is easy to understand and use for analysis
+
 
 ##Original Dataset Description
 
@@ -55,40 +95,3 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
 *  tBodyGyroMean
 *  tBodyGyroJerkMean
 
-##Process Followed to Generate Final Output
-The original data contained both training and test datasets.  There datasets were stored in multiple files:
-*  A file with the observations and readings for each of 561 variables
-*  A file with the subject id for each observation 
-*  A file with the activity id for each observation
-In addtion to the experimental data, there were the following descriptive files:
-*  A file containing the variable names associated with the variables in the observations
-*  A file containing a cross reference between the activity id's and the activity descriptions
-
-Steps  
-
-1. Assign descritive column names to both the training and test datasets using the file containing the variable names.
-2. Create datasets that are a subset of each of the training and test datasets containing only the variables associated with mean and standard deviation.
-	+ Using the grep command with regular expressions provided an easy way to search the descriptive column names to select any column whose name contained the either the text mean() or std().
-	+ The grep command was chosen over the select command in the dplyr package because there were duplicate column names and the select command did not easily handle that situation
-3. Append the activity id and subject id data to the dataset from step 2 to create a complete dataset with the variables, subject id and activity id for each observation.
-4. Combine the test and training datasets from step 3 into a single dataset.
-5. Add the activity labels to the data set in step 4.  This adds a descriptive, categorical attribute to each observation to make it easier to understand what activity that observation is for.
-	+ This was done using the merge command from the dplyr package.
-	+ This was applied after creating the final dataset because the merge command re-orders the data set.  The original datasets are all in the same order which allows them to be combined cleanly.  If the application of the activity labels was done using merge prior to combining all of the subject and activity data to the variables, they would not be combined accurately.
-6. The activity id column was then removed from the dataset, leaving a clean dataset containing only the subject id, activity description and mean/std variables.
-7. The average of each variable in the dataset from step 6 was calculated grouped by each unique combination of subject id and activity description resulting in a dataset that contained the following:
-	+One row for every combination of subject id and activity
-	+One column for the average of observations for each of the original variables for that subject id and activity
-8. In order to make this data "tidy" and easy to use for analysis, I chose to reshape the wide dataset into a narrow dataset using the melt command from the reshape2 package.   
-The final, tidy dataset contains the following attributes:
-*  Subject ID
-*  ActivityDescription
-*  Variable - containes the name of the variable observed
-*  Value - contains the value of the average of the variable in the "Variable" column for that subject and activity
-
-The final dataset adheres to the general principals of "tidy" data as follows:
-*  Each observation is in a single row - the average of the original observations of the variable in the variable column for the subject and activity in the row  
-*  Each column has descriptive label names
-*  The rows have descriptive Activity descriptions making it easy to know what activity and variable it is for
-*  Each column only contains one single type of data
-*  The data is structured in a way that is easy to understand and use for analysis
