@@ -30,41 +30,42 @@ fBodyGyroMag
 fBodyGyroJerkMag  
 
 The set of variables that were estimated from these signals are: 
-*mean(): Mean value
-*std(): Standard deviation
-*mad(): Median absolute deviation 
-*max(): Largest value in array
-*min(): Smallest value in array
-*sma(): Signal magnitude area
-*energy(): Energy measure. Sum of the squares divided by the number of values. 
-*iqr(): Interquartile range 
-*entropy(): Signal entropy
-*arCoeff(): Autorregresion coefficients with Burg order equal to 4
-*correlation(): correlation coefficient between two signals
-*maxInds(): index of the frequency component with largest magnitude
-*meanFreq(): Weighted average of the frequency components to obtain a mean frequency
-*skewness(): skewness of the frequency domain signal 
-*kurtosis(): kurtosis of the frequency domain signal 
-*bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
-*angle(): Angle between to vectors.
+*  mean(): Mean value
+*  std(): Standard deviation
+*  mad(): Median absolute deviation 
+*  max(): Largest value in array
+*  min(): Smallest value in array
+*  sma(): Signal magnitude area
+*  energy(): Energy measure. Sum of the squares divided by the number of values. 
+*  iqr(): Interquartile range 
+*  entropy(): Signal entropy
+*  arCoeff(): Autorregresion coefficients with Burg order equal to 4
+*  correlation(): correlation coefficient between two signals
+*  maxInds(): index of the frequency component with largest magnitude
+*  meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+*  skewness(): skewness of the frequency domain signal 
+*  kurtosis(): kurtosis of the frequency domain signal 
+*  bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+*  angle(): Angle between to vectors.
 
 Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-*gravityMean
-*tBodyAccMean
-*tBodyAccJerkMean
-*tBodyGyroMean
-*tBodyGyroJerkMean
+*  gravityMean
+*  tBodyAccMean
+*  tBodyAccJerkMean
+*  tBodyGyroMean
+*  tBodyGyroJerkMean
 
 ##Process Followed to Generate Final Output
 The original data contained both training and test datasets.  There datasets were stored in multiple files:
-*A file with the observations and readings for each of 561 variables
-*A file with the subject id for each observation 
-*A file with the activity id for each observation
+*  A file with the observations and readings for each of 561 variables
+*  A file with the subject id for each observation 
+*  A file with the activity id for each observation
 In addtion to the experimental data, there were the following descriptive files:
-*A file containing the variable names associated with the variables in the observations
-*A file containing a cross reference between the activity id's and the activity descriptions
+*  A file containing the variable names associated with the variables in the observations
+*  A file containing a cross reference between the activity id's and the activity descriptions
 
 Steps  
+
 1. Assign descritive column names to both the training and test datasets using the file containing the variable names.
 2. Create datasets that are a subset of each of the training and test datasets containing only the variables associated with mean and standard deviation.
 + Using the grep command with regular expressions provided an easy way to search the descriptive column names to select any column whose name contained the either the text mean() or std().
@@ -80,14 +81,14 @@ Steps
 +One column for the average of observations for each of the original variables for that subject id and activity
 8. In order to make this data "tidy" and easy to use for analysis, I chose to reshape the wide dataset into a narrow dataset using the melt command from the reshape2 package.   
 The final, tidy dataset contains the following attributes:
-*Subject ID
-*ActivityDescription
-*Variable - containes the name of the variable observed
+*  Subject ID
+*  ActivityDescription
+*  Variable - containes the name of the variable observed
 *Value - contains the value of the average of the variable in the "Variable" column for that subject and activity
 
 The final dataset adheres to the general principals of "tidy" data as follows:
-*Each observation is in a single row - the average of the original observations of the variable in the variable column for the subject and activity in the row  
-*Each column has descriptive label names
-*The rows have descriptive Activity descriptions making it easy to know what activity and variable it is for
-*Each column only contains one single type of data
-*The data is structured in a way that is easy to understand and use for analysis
+*  Each observation is in a single row - the average of the original observations of the variable in the variable column for the subject and activity in the row  
+*  Each column has descriptive label names
+*  The rows have descriptive Activity descriptions making it easy to know what activity and variable it is for
+*  Each column only contains one single type of data
+*  The data is structured in a way that is easy to understand and use for analysis
