@@ -1,7 +1,7 @@
 # Getting and Cleaning Data Course Project 
-Coursera, Johns Hopkins 
-May 24, 2015
-Instructor - Jeff Leek
+Coursera, Johns Hopkins    
+May 24, 2015   
+Instructor - Jeff Leek   
 
 
 #Instructions for Project
@@ -15,24 +15,16 @@ Here are the data for the project:
 
 If you want to understand the data used in this project better download the dataset. The data file contains documentation that describes the experiment and the datasets.
 
-You should create one R script called run_analysis.R that does the following. 
-
-    1. Merges the training and the test sets to create one data set.
-    2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-    3. Uses descriptive activity names to name the activities in the data set
-    4. Appropriately labels the data set with descriptive variable names. 
-    5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-
+You should create one R script called run_analysis.R that does the following:
+1. Merges the training and the test sets to create one data set.
+2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+3. Uses descriptive activity names to name the activities in the data set
+4. Appropriately labels the data set with descriptive variable names. 
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 ##The project repo includes the following files:
-=========================================
-
 *  README.md
-
 *  Codebook.md - Codebook for the project 
-
 *  run_analysis.R - script used to generate the final output - this can be downloaded and executed to reproduce the output
-
 *  tidy_summarized_data - the final output geneerated by applying the run_analysis.R script to the original data set
 
