@@ -4,7 +4,7 @@ May 24, 2015
 Instructor - Jeff Leek   
 
 #Overview
-This repo is the output of an assigned project from the Getting and Cleaning Data courser offered by Johns Hopkins via Coursera.  The project details and repo information are below.
+This repo is the output of an assigned project from the Getting and Cleaning Data course offered by Johns Hopkins via Coursera.  The project details and repo information are below.
 
 ##Instructions given for Project
 One of the most exciting areas in all of data science right now is wearable computing - see for example [this article](http://www.insideactivitytracking.com/data-science-activity-tracking-and-the-battle-for-the-worlds-top-sports-brand/) . Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
@@ -18,6 +18,7 @@ Here are the data for the project:
 If you want to understand the data used in this project better download the dataset. The data file contains documentation that describes the experiment and the datasets.
 
 You should create one R script called run_analysis.R that does the following:
+
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 3. Uses descriptive activity names to name the activities in the data set
