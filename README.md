@@ -29,5 +29,5 @@ You should create one R script called run_analysis.R that does the following:
 *  README.md
 *  Codebook.md - Codebook for the project 
 *  run_analysis.R - script used to generate the final output - this can be downloaded and executed to reproduce the output
-*  tidy_summarized_data - the final output geneerated by applying the run_analysis.R script to the original data set
+*  tidy_summarized_data.txt - the final output geneerated by applying the run_analysis.R script to the original data set
 
