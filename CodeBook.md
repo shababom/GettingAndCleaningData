@@ -12,7 +12,7 @@ For more information on the original dataset see the "Original Dataset Descripti
 
 
 ##Steps  
-1. Assign descritive column names to both the training and test datasets using the file containing the variable names.
+1. Assign descriptive column names to both the training and test datasets using the file containing the variable names.
 2. Create datasets that are a subset of each of the training and test datasets containing only the variables associated with mean and standard deviation.
 	+ Using the grep command with regular expressions provided an easy way to search the descriptive column names to select any column whose name contained the either the text mean() or std().
 	+ The grep command was chosen over the select command in the dplyr package because there were duplicate column names and the select command did not easily handle that situation
